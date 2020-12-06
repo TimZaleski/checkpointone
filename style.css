@@ -1,0 +1,132 @@
+@font-face {
+  font-family: LifeCraft;
+  src: url(resources/LifeCraft_Font.ttf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+.outlaw-red{
+  background-color: #BF0F30;
+}
+
+.outlaw-navy{
+  background-color: #324359;
+}
+
+.outlaw-gray{
+  background-color: #556573;
+}
+
+.outlaw-lightblue{
+  background-color: #85C8F2;
+}
+
+.outlaw-teal{
+  background-color: #9BEAF2;
+}
+
+.outlaw-text-red{
+  color: #BF0F30;
+}
+
+.outlaw-text-navy{
+  color: #324359;
+}
+
+.outlaw-text-gray{
+  color: #556573;
+}
+
+.outlaw-text-lightblue{
+  color: #85C8F2;
+}
+
+.outlaw-text-teal{
+  color: #9BEAF2;
+}
+
+.outlaw-white
+{
+  background-color:#FDFDF0;
+}
+
+.wow-font{
+  font-family: LifeCraft;
+}
+
+.bgimage{
+  background-image: url(images/outlaw_hero.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+ }
+
+@media only screen and (max-width: 600px) {
+  .bgimage {
+    background-image: none;
+    background-color: #556573;;
+   }
+}
+
+@media only screen and (max-width: 600px) {
+  .remove-for-small {
+    display: none;
+   }
+}
+
+
+@media only screen and (min-width: 601px) {
+  .spillOver {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+   }
+}
+
+.icon-rtb {
+  height: 68px;
+  width: 68px;
+  background-image: url(images/iconborder.png);
+}
+
+.icon-rtb ins {
+  height:56px;
+  width:56px;
+  left:6px;
+  top:6px;
+  border-radius: 4px;
+  z-index: 5;
+  position: relative;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.icon-rtb a {
+  height: 62px;
+  width: 62px;
+  border-radius: 8px!important;
+  display: block;
+  left: -3px;
+  position: relative;
+  top: -2px;
+  z-index: 99;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.icon-rtb a:hover{
+  background-image: url(images/iconhighlight.png);
+}
+
+
+.bg-rtb{
+  background-image: url("images/roll.jpg");
+}
+

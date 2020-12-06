@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>WoW Outlaw Rogues</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    let results = [];
+    let usedResults = [];
+
+
+    function rollTheBones() {
+      let buffs = numberOfBuffs();
+      let container = document.getElementById("rollTheBonesCards");
+
+      results = ['True Bearing', 'Ruthless Precision', 'Broadside', 'Buried Treasure', 'Grand Melee', 'Skull and Crossbones'];
+      usedResults = [];
+
+      results = shuffleArray(results);
+
+      for (let i=0; i < buffs; i++)
+      {
+        usedResults.push(results[results.length - 1]);
+        results.pop();
+      }
+      
+      container.innerHTML = "";
+      usedResults.sort();
+      for (let i=0; i < usedResults.length; i++)
+      {
+        addACard(usedResults[i]);
+      }
+
+    }
+
+    function numberOfBuffs() {
+      let percent = 1 + Math.floor(Math.random() * 100);
+
+      if (percent == 100)
+      {
+        return 5;
+      }
+      else if (percent > 79 && percent <= 99)
+      {
+        return 2;
+      }
+      else if (percent <= 79)
+      {
+        return 1;
+      }
+    }
+
+    function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+        }
+        return array;
+    }
+
+    function addACard(cardName)
+    {
+      let container = document.getElementById("rollTheBonesCards");
+      let description = "";
+      let imageToUse = "";
+
+      let trueBearingString = "Finishing moves reduce the remaining cooldown of many of your abilities by an additional 1 sec per combo point.";
+      let sharkString = "Critical strike chance of Between the Eyes increased by 60%. Critical strike chance of all other abilities increased by 20%.";
+      let broadString = "Your combo-point generating abilities generate 1 additional combo point and deal 20% increased damage.";
+      let treasureString = "Increases Energy regeneration by 4 per sec.";
+      let meleeString = "Gain 2 sec of Slice and Dice per Combo point spent. Leech increased by 15%.";
+      let skullString = "Sinister Strike has a 30% chance of striking an additional time.";
+
+      if (cardName === "True Bearing")
+      {
+        description = trueBearingString;
+        imageToUse = "images/bearing.jpg"
+      }
+      else if (cardName === "Skull and Crossbones")
+      {
+        description = skullString;
+        imageToUse = "images/roger.jpg"
+      }
+      else if (cardName === "Grand Melee")
+      {
+        description = meleeString;
+        imageToUse = "images/melee.jpg"
+      }
+      else if (cardName === "Buried Treasure")
+      {
+        description = treasureString;
+        imageToUse = "images/buried.jpg"
+      }
+      else if (cardName === "Broadside")
+      {
+        description = broadString;
+        imageToUse = "images/broadside.jpg"
+      }
+      else if (cardName === "Ruthless Precision")
+      {
+        description = sharkString;
+        imageToUse = "images/shark.jpg"
+      }
+
+      let content = `
+       <div class="col-md-2 shadow p-3 mb-5 bg-white rounded ">
+        <div class="text-center">
+        <img src="${imageToUse}" class="img-fluid" alt="icon">
+        <h4>${cardName}</h4>
+        </div>
+        <h6>${description}</h6>
+    `;
+
+  // Append newyly created card element to the container
+  container.innerHTML += content;
+
+    }
+
+    </script>
+
+</head>
+
+<body>
+
+  <header class="sticky-top">
+    <div class="row outlaw-navy text-white">
+      <div class="col-md-6">
+        <img src="images/rogueIcon.png" alt="rogue icon">
+        <h2 class="navbar-text mr-auto wow-font">Outlaw Rogues</h2>
+      </div>
+      <div class="col-md-6 text-md-right">
+        <h4 class="navbar-text text-white"><a href="#rollTheBonesCards">Try Our Roll the Bone Simulator!</a></h4>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="container-fluid">
+    <div class="row text-white bgimage">
+      <div class="col-12">
+        <div class="row mb-md-3">
+          <div class="col-md-4">
+            <p>Leave Us a Comment</p>
+            <div class="card">
+              <div class="card-body">
+
+                <p class="outlaw-text-navy">Outlaw Rogue Appreciation</p>
+                <form>
+                  <div class="row register-form">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="NAME">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row register-form">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="EMAIL">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row register-form">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="PHONE">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="EXT.">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row register-form">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          placeholder="MESSAGE"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="text-white remove-for-small py-4">
+              <h2>Why Outlaw is the Right Spec For You</h2>
+              <p>An expert's insight into the most fun rogue specialization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center outlaw-navy">
+      <div class="col-md-6 py-4 text-white justify-content-center ">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>The Highest Preforming Specialization in Shadowlands?</h3>
+          </div>
+          <div class="col-md-12">
+            <p>The sims don't lie, Outlaw is doing very well in the meters these days. The last minute changes to our Covenant abilities as well as a very powerful legendary item have thrust us to the front of the line. Celerity being a dungeon drop makes it obtainable by the second week of Shadowland's release, which is a welcome boost to early mythics and raiding. </p>
+            <p>Between the two other choices, assassination is the clear loser. The 'dot' oriented spec has hemorrhaged usability early on, especially due to its weak AOE capabilities. Subtlety at least can spam Fan of Knives and try to imitate Blade Flurry, but it will always fall short. </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 py-4  text-white justify-content-center ">
+        <div class="card outlaw-gray spillOver">
+          <div class="card-body">
+            <img src="images/mythicplus.png" class="img-fluid" alt="rtb">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row outlaw-white">
+      <div class="col-md-4 p-5">
+        <img src="images/weapons.jpg" alt="weapons" class="img-fluid">
+      </div>
+      <div class="col-md-4 col-sm-8 p-md-5 p-sm-5">
+        <p> <i class="fa fa-check-circle fa-2x" aria-hidden="true"></i> I vividly remember the Legion preview panel at Blizzcon 2015, and the PowerPoint slide that would alter my destiny. The developers were discussing the new systems of the upcoming expansion, one of which was an "artifact weapon" that would be tailored to each class and specialization. Unlocking the weapons themselves was a quest chain, and the player would spend the rest of the expansion increasing its power. For these weapons, however, you weren't locked in to just one look. They came in a variety of skins and models, each gated behind an achievement or quest. I was blown away by the designs being presented on the screen. These models simply looked incredible, and when I saw the fencing style weapon, I knew that I had to unlock it. This weapon has been part of my signature look for years.</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-around align-items-center outlaw-navy">
+      <div class="col-md-3 order-sm-1 order-2 mt-sm-5">
+        <div class="card outlaw-gray">
+          <div class="card-body">
+            <h5 class="card-title text-center">Assassination</h5>
+            <p class="card-text">PROS:</p>
+            <ul>
+              <li>Low APM</li>
+              <li>Fun on long fights</li>
+            </ul>
+            <p class="card-text">CONS:</p>
+            <ul>
+              <li>Terrible AOE</li>
+              <li>Good luck finding a M+ group</li>
+              <li>Boring</li>
+              <li>Doesn't have Roll the Bones</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 order-sm-2 order-1 mt-sm-5">
+        <div class="card  outlaw-gray">
+          <div class="card-body">
+            <div class="text-center">
+              <i class="fa fa-star fa-3x outlaw-text-red" aria-hidden="true"></i>
+              <i class="fa fa-star fa-3x outlaw-text-red" aria-hidden="true"></i>
+              <i class="fa fa-star fa-3x outlaw-text-red" aria-hidden="true"></i>
+            </div>
+            <h5 class="card-title text-center">Outlaw</h5>
+            <p class="card-text">PROS:</p>
+            <ul>
+              <li>RNG is fun</li>
+              <li>Top rated in M+</li>
+              <li>Has Roll the Bones</li>
+              <li>Best looking weapons</li>
+              <li>Best AOE</li>
+            </ul>
+            <p class="card-text">CONS:</p>
+            <ul>
+              <li>Could be better in PvP potentially</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 order-3 mt-sm-5">
+        <div class="card outlaw-gray">
+          <div class="card-body">
+            <h5 class="card-title text-center">Subtely</h5>
+            <p class="card-text">PROS:</p>
+            <ul>
+              <li>Good in PVP</li>
+              <li>Decent in M+</li>
+              <li>Super sneaky</li>
+            </ul>
+            <p class="card-text">CONS:</p>
+            <ul>
+              <li>Daggers are less cool than swords</li>
+              <li>Doesn't have Roll the Bones</li>
+              <li>Not fun</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="row outlaw-white">
+        <div class="col-md-8 m-3">
+          <h2 class="">Roll the Bones Simulator</h2>
+          
+          <p>Simulate the thrill of Outlaw's signature ability with a percentage accurate simulator!</p>
+          <div class="icon-rtb">
+            <ins class="bg-rtb"><a href="javascript:rollTheBones()"></a></ins>
+            
+          </div>
+          <div id="rollTheBonesCards" class="row mt-5">
+            
+          </div>
+        </div>
+        <div class="col-md-3 m-3">
+          <video width="320" height="240" controls>
+            <source src="resources/rollVideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </main>
+  <footer>
+
+  </footer>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+  <div class="row">
+    <div class="col-md-12 text-center outlaw-gray py-3">
+      <p>A website by Tim Zaleski</p>
+    </div>
+  </div>
+</html>
