@@ -21,6 +21,7 @@
     function rollTheBones() {
       let buffs = numberOfBuffs();
       let container = document.getElementById("rollTheBonesCards");
+      var snd = new Audio("resources/roll.wav");
 
       results = ['True Bearing', 'Ruthless Precision', 'Broadside', 'Buried Treasure', 'Grand Melee', 'Skull and Crossbones'];
       usedResults = [];
@@ -39,7 +40,12 @@
       {
         addACard(usedResults[i]);
       }
-
+      
+      if (!document.getElementById("rollSoundCheck").checked)
+      {
+        snd.currentTime = 0;
+        snd.play();
+      }
     }
 
     function numberOfBuffs() {
@@ -309,6 +315,8 @@
             <ins class="bg-rtb"><a href="javascript:rollTheBones()"></a></ins>
             
           </div>
+          <input type="checkbox" id="rollSoundCheck" name="rollSoundCheck" value="check">
+          <label for="vehicle1">Mute roll sound</label><br>
           <div id="rollTheBonesCards" class="row mt-5">
             
           </div>
